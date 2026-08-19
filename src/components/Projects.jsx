@@ -34,6 +34,8 @@ const projects = [
     description: 'CQL Interactive est un groupe que j\'ai fondé avec un ami développant plusieurs quiz en ligne. Notre objectif est de créer des jeux éducatifs et divertissants, accessibles à tous gratuitement comme [C Quoi Le Jeu](https://cquoilejeu.fr).',
     logo: '/images/cql-interactive_logo.png',
     tags: ['Node.js', 'HTML/CSS', 'React.js', 'Site Web'],
+    startDate: "juin 2025",
+    endDate: "aujourd'hui",
     links: [
       { label: 'Site', icon: faGlobe, url: 'https://cql-interactive.fr' },
       { label: 'GitHub', icon: faGithub, url: 'https://github.com/CQL-Interactive/' },
@@ -44,6 +46,8 @@ const projects = [
     description: 'Les bots Caaqlojin (Caaqlojin, CaaqlojinAI et Caaqlojin - Sondages) sont des bots Discord créés pour le serveur de CQL Interactive.',
     logo: '/images/caaqlojin_logo.png',
     tags: ['Discord.js', 'Discord.py', 'Bots Discord'],
+    startDate: "juin 2025",
+    endDate: "aujourd'hui",
     links: [
       { label: 'Discord', icon: faDiscord, url: 'https://discord.gg/Evu8WXm27z' },
     ],
@@ -53,6 +57,8 @@ const projects = [
     description: 'MoyenneExpress est l\'outil fait pour calculer votre moyenne générale ! Disponible sur Windows et macOS.',
     logo: '/images/moyenneexpress_logo.png',
     tags: ['Python', 'Tkinter', 'App', 'Windows & macOS'],
+    startDate: "2023",
+    endDate: "2024",
     links: [
       { label: 'Télécharger', icon: faDownload, url: 'https://github.com/Elicopter78/MoyenneExpress/releases' },
       { label: 'GitHub', icon: faGithub, url: 'https://github.com/Elicopter78/MoyenneExpress' },
@@ -63,6 +69,8 @@ const projects = [
     description: 'Mon portfolio personnalisé présentant mes compétences et mes projets avec un design moderne et des animations fluides.',
     logo: '/images/portfolio_logo.png',
     tags: ['Node.js', 'React.js', 'HTML/CSS', 'Site Web'],
+    startDate: "octobre 2025",
+    endDate: "aujourd'hui",
     links: [
       { label: 'Site', icon: faGlobe, url: 'https://elie-dev.fr' },
     ],
@@ -72,6 +80,8 @@ const projects = [
     description: 'Un décompte simple et efficace pour 2027. Une application web minimaliste et responsive.',
     logo: '/images/decompte2027_logo.png',
     tags: ['Node.js', 'HTML/CSS', 'Site Web'],
+    startDate: "janvier 2026",
+    endDate: "aujourd'hui",
     links: [
       { label: 'Site', icon: faGlobe, url: 'https://2027.elie-dev.fr' },
     ],
@@ -81,6 +91,8 @@ const projects = [
     description: 'Bot Discord avec des commandes funs pour s\'amuser entre amis et animer votre serveur Discord.',
     logo: '/images/pissenlit_logo.png',
     tags: ['Discord.js', 'Bots Discord'],
+    startDate: "avril 2026",
+    endDate: "aujourd'hui",
     links: [
       { label: 'GitHub', icon: faGithub, url: 'https://github.com/Elicopter78/Pissenlit' },
     ],
@@ -150,6 +162,14 @@ export default function Projects() {
                 <h3 className="text-xl sm:text-2xl font-jp font-semibold text-gray-900 mb-3 group-hover:text-sakura transition-colors duration-300">
                   {project.name}
                 </h3>
+
+                {(project.startDate || project.endDate) && (
+                  <p className="text-xs sm:text-sm text-sakura font-jp mb-3">
+                    {project.startDate}
+                    {project.startDate && project.endDate && " à "}
+                    {project.endDate}
+                  </p>
+                )}
 
                 <p className="text-gray-600 text-sm sm:text-base mb-6 flex-grow leading-relaxed">
                   <DescriptionWithLinks text={project.description} />

@@ -18,7 +18,6 @@ const skills = [
 
 export default function Skills() {
   const [isVisible, setIsVisible] = useState(false);
-  const [animatedLevels, setAnimatedLevels] = useState(skills.map(() => 0));
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -37,24 +36,6 @@ export default function Skills() {
 
     return () => observer.disconnect();
   }, []);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    const interval = setInterval(() => {
-      setAnimatedLevels((prev) => {
-        const newLevels = prev.map((level, index) => {
-          if (level < skills[index].level) {
-            return Math.min(level + 1, skills[index].level);
-          }
-          return level;
-        });
-        return newLevels;
-      });
-    }, 20);
-
-    return () => clearInterval(interval);
-  }, [isVisible]);
 
   return (
     <section id="skills" ref={sectionRef} className="py-16 sm:py-20 px-4 relative">
@@ -96,16 +77,18 @@ export default function Skills() {
                 
                 <div className="relative h-2 bg-gray-200 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-sakura to-sakura-light rounded-full transition-all duration-1000"
+                    className={`h-full bg-gradient-to-r from-sakura to-sakura-light rounded-full transition-all duration-1000 ease-out ${
+                      isVisible ? 'w-[var(--progress)]' : 'w-0'
+                    }`}
                     style={{
-                      width: `${animatedLevels[index]}%`,
-                      transitionDelay: `${index * 50 + 200}ms`,
+                      '--progress': `${skill.level}%`,
+                      transitionDelay: `${index * 100}ms`,
                     }}
                   ></div>
                 </div>
                 
                 <div className="text-right mt-2 text-sakura font-jp font-bold text-sm">
-                  {animatedLevels[index]}%
+                  {skill.level}%
                 </div>
               </div>
             </div>
