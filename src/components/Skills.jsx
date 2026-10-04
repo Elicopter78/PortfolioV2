@@ -1,19 +1,39 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPython, faGitAlt, faDiscord, faNodeJs, faHtml5, faReact } from '@fortawesome/free-brands-svg-icons';
-import { faServer, faDatabase } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faComments, faDatabase, faServer } from '@fortawesome/free-solid-svg-icons';
 
-const skills = [
-  { name: 'Python', level: 85, icon: faPython },
-  { name: 'HTML/CSS', level: 80, icon: faHtml5 },
-  { name: 'Discord.py', level: 80, icon: faDiscord },
-  { name: 'Configuration VPS', level: 80, icon: faServer },
-  { name: 'Node.js', level: 75, icon: faNodeJs },
-  { name: 'React.js', level: 70, icon: faReact },
-  { name: 'SQLite', level: 70, icon: faDatabase },
-  { name: 'Discord.js', level: 70, icon: faDiscord },
-  { name: 'Git', level: 70, icon: faGitAlt },
-  { name: 'PostgreSQL', level: 65, icon: faDatabase },
+const skillGroups = [
+  {
+    number: '01', title: 'Web & interfaces', icon: faCode,
+    skills: [
+      { name: 'React.js', icon: faReact },
+      { name: 'HTML/CSS', icon: faHtml5 },
+      { name: 'Node.js', icon: faNodeJs },
+    ],
+  },
+  {
+    number: '02', title: 'Bots Discord', icon: faComments,
+    skills: [
+      { name: 'Discord.js', icon: faDiscord },
+      { name: 'Discord.py', icon: faDiscord },
+    ],
+  },
+  {
+    number: '03', title: 'Données', icon: faDatabase,
+    skills: [
+      { name: 'SQLite', icon: faDatabase },
+      { name: 'PostgreSQL', icon: faDatabase },
+    ],
+  },
+  {
+    number: '04', title: 'Outils & systèmes', icon: faServer,
+    skills: [
+      { name: 'Python', icon: faPython },
+      { name: 'Git', icon: faGitAlt },
+      { name: 'Configuration VPS', icon: faServer },
+    ],
+  },
 ];
 
 export default function Skills() {
@@ -38,65 +58,54 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-16 sm:py-20 px-4 relative">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-block mb-4">
-            <div className="flex items-center gap-3 px-4 py-2 bg-sakura/10 rounded-full border border-sakura/30">
-              <span className="w-2 h-2 rounded-full bg-sakura"></span>
-              <span className="text-sakura font-jp text-sm font-semibold">COMPÉTENCES</span>
-              <span className="w-2 h-2 rounded-full bg-sakura"></span>
+    <section id="skills" ref={sectionRef} className="relative px-4 py-16 sm:py-20">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-12 text-center sm:mb-16">
+          <div className="mb-4 inline-block">
+            <div className="flex items-center gap-3 rounded-full border border-sakura/30 bg-sakura/10 px-4 py-2">
+              <span className="h-2 w-2 rounded-full bg-sakura" />
+              <span className="font-jp text-sm font-semibold text-sakura">COMPÉTENCES</span>
+              <span className="h-2 w-2 rounded-full bg-sakura" />
             </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif-jp font-bold text-gray-900 mb-4">
+          <h2 className="mb-4 font-serif-jp text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
             Mes Compétences
           </h2>
-          <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
-            Une sélection des technologies et outils que j'utilise quotidiennement
+          <p className="mx-auto max-w-2xl text-base text-gray-600 sm:text-lg">
+            Les technologies et outils que j'utilise pour créer des sites, applications et bots Discord.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {skills.map((skill, index) => (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
+          {skillGroups.map((group, index) => (
             <div
-              key={skill.name}
-              className={`group transition-all duration-500 ${
-                isVisible
-                  ? 'translate-y-0 opacity-100'
-                  : 'translate-y-10 opacity-0'
-              }`}
-              style={{ transitionDelay: `${index * 50}ms` }}
+              key={group.number}
+              className={`transition-all duration-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+              style={{ transitionDelay: `${index * 60}ms` }}
             >
-              <div className="p-6 rounded-xl bg-gray-50 border border-sakura/20 hover:border-sakura/50 group-hover:bg-gray-100 transition-all duration-300 h-full">
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 text-sakura">
-                  <FontAwesomeIcon icon={skill.icon} />
+              <div className="h-full rounded-xl border border-sakura/20 bg-gray-50 p-6 transition-all duration-300 hover:border-sakura/50 hover:bg-gray-100 hover:shadow-lg hover:shadow-sakura/20 sm:p-8">
+                <div className="mb-6 flex items-center gap-4">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-sakura/20 to-sakura-dark/20 text-lg text-sakura">
+                    <FontAwesomeIcon icon={group.icon} aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="mb-1 font-jp text-xs font-semibold text-sakura">DOMAINE {group.number}</p>
+                    <h3 className="font-jp text-xl font-semibold text-gray-900">{group.title}</h3>
+                  </div>
                 </div>
-                <h3 className="text-gray-900 font-jp font-semibold mb-4">
-                  {skill.name}
-                </h3>
-                
-                <div className="relative h-2 bg-gray-200 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full bg-gradient-to-r from-sakura to-sakura-light rounded-full transition-all duration-1000 ease-out ${
-                      isVisible ? 'w-[var(--progress)]' : 'w-0'
-                    }`}
-                    style={{
-                      '--progress': `${skill.level}%`,
-                      transitionDelay: `${index * 100}ms`,
-                    }}
-                  ></div>
-                </div>
-                
-                <div className="text-right mt-2 text-sakura font-jp font-bold text-sm">
-                  {skill.level}%
-                </div>
+
+                <ul className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <li key={skill.name} className="flex items-center gap-2 rounded-full border border-sakura/30 bg-sakura/10 px-3 py-1 font-jp text-xs text-sakura sm:text-sm">
+                    <FontAwesomeIcon icon={skill.icon} aria-hidden="true" />
+                    <span>{skill.name}</span>
+                  </li>
+                ))}
+                </ul>
               </div>
             </div>
           ))}
         </div>
-
-        <div className="absolute top-1/2 -left-20 w-40 h-40 rounded-full border border-sakura/10 -z-10 hidden lg:block"></div>
-        <div className="absolute bottom-1/4 -right-20 w-32 h-32 rounded-full border-2 border-sakura/10 -z-10 hidden lg:block"></div>
       </div>
     </section>
   );

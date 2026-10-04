@@ -6,12 +6,9 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loading from './components/Loading';
-import KonamiGame from './components/KonamiGame';
-import { useKonamiCode } from './hooks/useKonamiCode';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const { isKonamiUnlocked, resetKonami } = useKonamiCode();
 
   useEffect(() => {
     const startTime = performance.now();
@@ -69,17 +66,6 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && isKonamiUnlocked) {
-        resetKonami();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isKonamiUnlocked, resetKonami]);
-
   if (isLoading) {
     return <Loading />;
   }
@@ -94,9 +80,6 @@ function App() {
         <Contact />
       </main>
       <Footer />
-      {isKonamiUnlocked && (
-        <KonamiGame onClose={resetKonami} />
-      )}
     </div>
   );
 }
