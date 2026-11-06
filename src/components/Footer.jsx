@@ -68,7 +68,7 @@ export default function Footer() {
                 <FontAwesomeIcon icon={faDiscord} />
               </a>
               <a
-                href="mailto:contact@elie-dev.fr"
+                href="mailto:crevette@elie-dev.fr"
                 className="w-10 h-10 rounded-full bg-gray-100 border border-sakura/30 flex items-center justify-center text-gray-900 hover:bg-sakura hover:text-white hover:border-sakura transition-all duration-300"
                 title="Email"
               >
