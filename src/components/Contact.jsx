@@ -51,14 +51,14 @@ export default function Contact() {
           }`}>
             <div className="space-y-8">
               <div className="group p-6 rounded-xl bg-gray-50 border border-sakura/20 hover:border-sakura/50 transition-all duration-300 cursor-pointer">
-                <a href="mailto:contact@elie-dev.fr" className="flex items-start gap-4">
+                <a href="mailto:crevette@elie-dev.fr" className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-sakura/20 to-sakura-dark/20 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
                     <FontAwesomeIcon icon={faEnvelope} className="text-sakura" />
                   </div>
                   <div>
                     <h3 className="text-gray-900 font-jp font-semibold mb-1">Email</h3>
                     <p className="text-gray-600 hover:text-sakura transition-colors duration-300">
-                      contact@elie-dev.fr
+                      crevette@elie-dev.fr
                     </p>
                   </div>
                 </a>
