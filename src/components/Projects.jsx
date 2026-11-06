@@ -76,14 +76,15 @@ const projects = [
     ],
   },
   {
-    name: 'Décompte 2027',
-    description: 'Un décompte simple et efficace pour 2027. Une application web minimaliste et responsive.',
-    logo: '/images/decompte2027_logo.png',
+    name: 'Décompte Nouvel An',
+    description: 'Un décompte simple, efficace et responsive pour suivre le temps restant avant l\'année prochaine.',
+    logo: '/images/decompte-nouvel-an_logo.png',
     tags: ['Node.js', 'HTML/CSS', 'Site Web'],
     startDate: "janvier 2026",
     endDate: "aujourd'hui",
     links: [
-      { label: 'Site', icon: faGlobe, url: 'https://2027.elie-dev.fr' },
+      { label: 'Site', icon: faGlobe, url: 'https://new-year.elie-dev.fr' },
+      { label: 'GitHub', icon: faGithub, url: 'https://github.com/Elicopter78/DecompteNouvelAn' },
     ],
   },
   {
